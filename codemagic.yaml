@@ -43,7 +43,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - nei2014pmsc@icloud.com   # substitua pelo seu e-mail
+          - neipmsc2014@icloud.com   # substitua pelo seu e-mail
         notify:
           success: true
           failure: true
