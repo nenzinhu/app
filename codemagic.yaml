@@ -1,0 +1,49 @@
+workflows:
+  ios-release:
+    name: PMRv 4em1 - iOS IPA
+    max_build_duration: 60
+    environment:
+      ios_signing:
+        distribution_type: development   # troque para app_store se tiver conta paga
+        bundle_identifier: br.pm.pmrv4em1
+      vars:
+        XCODE_SCHEME: "App"
+      node: latest
+      xcode: latest
+      cocoapods: default
+
+    scripts:
+      - name: Instalar dependências npm
+        script: npm install
+
+      - name: Adicionar plataforma iOS
+        script: |
+          if [ ! -d "ios" ]; then
+            npx cap add ios
+          fi
+
+      - name: Sincronizar arquivos web → iOS
+        script: npx cap sync ios
+
+      - name: Instalar pods CocoaPods
+        script: |
+          cd ios/App
+          pod install
+
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --workspace "ios/App/App.xcworkspace" \
+            --scheme "$XCODE_SCHEME"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      email:
+        recipients:
+          - nei2014pmsc@icloud.com   # substitua pelo seu e-mail
+        notify:
+          success: true
+          failure: true

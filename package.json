@@ -1,0 +1,22 @@
+{
+  "name": "pmrv-4em1-ios",
+  "version": "1.0.0",
+  "description": "PMRv 4em1 - iOS Build",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Static HTML — no build needed'",
+    "ios": "npx cap add ios && npx cap sync ios && npx cap open ios"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
+    "@capacitor/ios": "^6.2.1"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5"
+  }
+}

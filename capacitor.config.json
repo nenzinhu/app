@@ -1,0 +1,9 @@
+{
+  "appId": "br.pm.pmrv4em1",
+  "appName": "PMRv 4em1",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "automatic",
+    "backgroundColor": "#000000"
+  }
+}
